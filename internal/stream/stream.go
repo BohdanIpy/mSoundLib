@@ -11,10 +11,11 @@ const (
 )
 
 type AudioStream struct {
-	stream     *portaudio.Stream
+	Stream     *portaudio.Stream
 	StreamMode StreamMode
 }
 
+/*
 func (s *AudioStream) Start() error {
 	return s.stream.Start()
 }
@@ -26,3 +27,4 @@ func (s *AudioStream) Stop() error {
 func (s *AudioStream) Close() error {
 	return s.stream.Close()
 }
+*/

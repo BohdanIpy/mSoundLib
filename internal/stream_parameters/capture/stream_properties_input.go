@@ -13,7 +13,7 @@ type StreamPropertiesInput struct {
 	Flags            portaudio.StreamFlags
 }
 
-func DefaultInputStreamProperties() StreamPropertiesInput {
+func DefaultStreamPropertiesInput() StreamPropertiesInput {
 	return StreamPropertiesInput{
 		Channels:         1, // mono by default
 		LatencyOfReading: 100 * time.Millisecond,

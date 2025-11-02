@@ -7,7 +7,7 @@ import (
 	"github.com/gordonklaus/portaudio"
 )
 
-type StreamCallback func(in, out []float32, timeInfo portaudio.StreamCallbackTimeInfo, flags portaudio.StreamCallbackFlags)
+type StreamCallback func(in []float32, out []float32, timeInfo portaudio.StreamCallbackTimeInfo, flags portaudio.StreamCallbackFlags)
 
 func NewOutputStream(properties playback.StreamPropertiesOutput, callback StreamCallback) (*AudioStream, error) {
 	outputParameters, err := playback.GetOutputStreamParameters(properties)
@@ -18,7 +18,7 @@ func NewOutputStream(properties playback.StreamPropertiesOutput, callback Stream
 	if err != nil {
 		return nil, err
 	}
-	return &AudioStream{stream: stream, StreamMode: OUTPUT_AUDIO_STREAM}, nil
+	return &AudioStream{Stream: stream, StreamMode: OUTPUT_AUDIO_STREAM}, nil
 }
 
 func NewInputStream(props capture.StreamPropertiesInput, callback StreamCallback) (*AudioStream, error) {
@@ -32,7 +32,7 @@ func NewInputStream(props capture.StreamPropertiesInput, callback StreamCallback
 		return nil, err
 	}
 
-	return &AudioStream{stream: stream, StreamMode: INPUT_AUDIO_STREAM}, nil
+	return &AudioStream{Stream: stream, StreamMode: INPUT_AUDIO_STREAM}, nil
 }
 
 func NewDuplexStream(props duplex.DuplexStreamProperties, callback StreamCallback) (*AudioStream, error) {
@@ -46,5 +46,5 @@ func NewDuplexStream(props duplex.DuplexStreamProperties, callback StreamCallbac
 		return nil, err
 	}
 
-	return &AudioStream{stream: stream, StreamMode: DUPLEX_AUDIO_STREAM}, nil
+	return &AudioStream{Stream: stream, StreamMode: DUPLEX_AUDIO_STREAM}, nil
 }
